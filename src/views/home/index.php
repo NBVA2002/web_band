@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="<?php echo _WEB_ROOT; ?>/public/assets/css/styles.css">
     <link rel="stylesheet" href="<?php echo _WEB_ROOT; ?>/public/assets/css/responsive.css">
     <link rel="stylesheet" href="<?php echo _WEB_ROOT; ?>/public/assets/icon/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 
 <body>
@@ -42,6 +43,9 @@
             <!-- search button -->
             <div class="search-btn">
                 <div class="search-icon ti-search"></div>
+            </div>
+            <div class="search-btn">
+                <i class="fa-solid fa-user search-icon" style="color:#fff"></i>
             </div>
         </div>
 
