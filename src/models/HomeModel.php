@@ -1,7 +1,7 @@
 <?php
 class HomeModel extends Model
 {
-
+    
     protected $_table = 'user';
 
     public function __construct()

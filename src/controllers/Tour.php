@@ -15,13 +15,13 @@ class Tour extends Controller
     }
     
     public function list() {
-        $dataList  = $this->model_tour->getList();
+        $dataList  = $this->model_tour->getListModel("WHERE id = 2");
         $this->data['tour_list'] = $dataList;
         $this->render('tour/list',$this->data);
     }
 
     public function detail($id) {
-        $dataDetail  = $this->model_tour->getDetail($id);
+        $dataDetail  = $this->model_tour->getDetailModel($id);
         $this->data['tour_detail'] = $dataDetail;
         $this->render('tour/detail',$this->data);
     }
