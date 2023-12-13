@@ -1,0 +1,109 @@
+body {
+    font-family: Verdana;
+    margin: 0;  
+}
+table {
+    font-size: 13pt;
+    font-family: Verdana;
+}
+input {
+    font-size: 13pt;
+    font-family: Verdana;
+}
+select {
+    font-size: 13pt;
+}
+/* ---------------Top--------------------*/
+.top {
+    background-color: #E0E0E0;
+    height: 35px;
+    width: 100%;
+    max-width: 2000px;
+}
+#timer {
+    margin-right: 50px;
+    font-size: 25pt;
+    right: 0;
+    font-weight: bold;
+    color: #005080;
+}
+.text{
+    left:0;
+    font-size: 17pt;
+    font-weight: bold;
+    color: #005080;
+}
+/* ---------------Top--------------------*/
+.container {
+    padding: 0 !important;
+    background-color: white;
+    display: flex;
+    width : 100%;
+    height: 100%;
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 2000px;
+}
+/* ---------------SideBar Start--------------------*/
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 20%;
+    height: 100%;
+    overflow-y: auto;
+    background: var(--light);
+    transition: 0.5s;
+    border-style: solid;
+    border-width: 0 1px 0 0;
+    margin-top: 35px;
+    max-width: 500px;
+}
+.menu {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 2.5rem;
+    padding-bottom: 0.5rem 
+}
+.navbar {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    width: 100% !important;
+}
+a {
+    cursor: pointer;
+}
+.nav-item {
+    padding: 7px 20px;
+    color: #005080;
+}
+.nav-link {
+    text-decoration: none;
+    font-size: 18pt;
+}
+.nav-link:hover {
+    color: red;
+}
+/* ---------------Sidebar End--------------------*/
+/* ---------------Content Start--------------------*/
+.content{
+    position: fixed;
+    margin-top: 20px;
+    height: 100%;
+    width: 80%;
+    right: 0;
+}
+.title{
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 43px;
+    font-weight: bold;
+}
+/* ---------------Content End--------------------*/

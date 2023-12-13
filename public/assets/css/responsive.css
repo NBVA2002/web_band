@@ -1,0 +1,85 @@
+/* pc */
+@media ( min-width: 1024px ) {
+
+}
+
+/* tablet */
+@media ( min-width: 740px) and ( max-width: 1023px) {
+
+}
+
+/* mobile */
+@media ( max-width: 739px ) {
+    .s-full-width,
+    .s-col-full{
+        width: 100% !important;
+    }
+
+    .s-mt-8{
+        margin-top: 8px !important;
+    }
+    
+    #header {
+        overflow: hidden;
+    }
+    
+    #header .mobile-menu-btn{
+        display: block;
+    }
+
+    #header .search-icon{
+        display: none;
+    }
+
+    #nav {
+        display: block;
+    }
+    
+    #nav > li {
+        display: block;
+    }
+    #nav li a {
+        padding: 1px 24px;
+    }
+
+    #nav .subnav a{
+        color: #fff;
+        padding: 5px 40px;
+    }
+
+    #nav > li:first-child {
+        display: inline-block;
+    }
+
+    #nav .subnav{
+        position: initial;
+        background-color: #333;
+    }
+
+    #content .member-item{
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    #content .member-img{
+        width: 60%;
+    }
+
+    #content .member-list{
+        margin-top: 20px;
+    }
+
+    .place-list{
+        margin-top: 16px;
+    }
+
+    .place-item{
+        width: 100%;
+        margin-top: 16px;
+    }
+
+    .contact-form{
+        margin-top: 16px;
+    }
+
+}
