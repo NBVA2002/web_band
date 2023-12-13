@@ -15,7 +15,7 @@ class Tour extends Controller
     }
     
     public function list() {
-        $dataList  = $this->model_tour->getListModel("WHERE id = 2");
+        $dataList  = $this->model_tour->getListModel();
         $this->data['tour_list'] = $dataList;
         $this->render('tour/list',$this->data);
     }
