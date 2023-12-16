@@ -1,5 +1,7 @@
 <?php
-class UserModel extends Model{
+class UserModel extends Model
+{
+
     protected $_table = 'user';
 
     public function __construct()
@@ -7,33 +9,32 @@ class UserModel extends Model{
         parent::__construct();
     }
 
-    public function createModel($data)
+    public function createUser($data)
     {
         return parent::create($this->_table, $data);
     }
 
-    public function updateModel($id, $data)
+    public function updateHome($id, $data)
     {
         return parent::update($this->_table, $id, $data);
     }
 
-    public function deleteModel($id)
+    public function deleteUser($id)
     {
         return parent::delete($this->_table, $id);
     }
 
-    public function getListModel()
+    public function getList()
     {
         return parent::findAll($this->_table);
     }
 
-    public function getDetailModel($id)
+    public function getDetail($id)
     {
         return parent::findById($this->_table, $id);
     }
-
-    public function findByEmail($email)
+    public function getDetailEmail($email)
     {
-        return parent::findAll($this->_table, "WHERE email = '".$email."'");
+        return parent::findByEmail($this->_table, $email);
     }
 }
