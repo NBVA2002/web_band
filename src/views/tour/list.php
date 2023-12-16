@@ -1,17 +1,14 @@
-<!-- Danh sách tour diễn -->
-<?php
-
-echo '<pre>';
-print_r($tour_list);
-echo '</pre>'; ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vé xem âm nhạc</title>
+    <!-- <link rel="stylesheet" href="<?php echo _WEB_ROOT; ?>/public/assets/css/styles.css">
+    <link rel="stylesheet" href="<?php echo _WEB_ROOT; ?>/public/assets/css/responsive.css">
+    <link rel="stylesheet" href="<?php echo _WEB_ROOT; ?>/public/assets/icon/themify-icons/themify-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"> -->
+    <title>Danh Sách Vé</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -23,7 +20,7 @@ echo '</pre>'; ?>
         .container {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-around;
+            /* justify-content: space-around; */
             max-width: 1200px;
             margin: 20px auto;
         }
@@ -48,7 +45,7 @@ echo '</pre>'; ?>
             padding: 10px;
         }
 
-        h2,
+        h3,
         p {
             margin: 0;
             color: #333;
@@ -75,93 +72,20 @@ echo '</pre>'; ?>
 </head>
 
 <body>
+
     <div class="container">
         <!-- Thẻ trên -->
-        <div class="card">
-            <img src="background1.jpg" alt="Background 1">
-            <div class="content">
-                <h2>Địa điểm 1</h2>
-                <p>Ngày giờ: DD/MM/YYYY - HH:MM AM/PM</p>
-                <p>Mô tả: Mô tả chi tiết về sự kiện âm nhạc.</p>
-                <button class="buy-ticket">Buy Ticket</button>
+        <?php foreach ($tour_list as $tour) { ?>
+            <div class="card">
+                <img src="<?php echo _WEB_ROOT; ?>/public/assets/img/content/sanfran.jpg" alt="San Francisco" class="place-img">
+                <div class="content">
+                    <h3 class="place-heading"><?php echo $tour['address'] ?></h3>
+                    <p class="place-time"><?php echo $tour['date'] ?></p>
+                    <p class="place-decs"><?php echo $tour['description'] ?></p>
+                    <button class="buy-ticket">Buy Tickets</button>
+                </div>
             </div>
-        </div>
-
-        <div class="card">
-            <img src="background2.jpg" alt="Background 2">
-            <div class="content">
-                <h2>Địa điểm 2</h2>
-                <p>Ngày giờ: DD/MM/YYYY - HH:MM AM/PM</p>
-                <p>Mô tả: Mô tả chi tiết về sự kiện âm nhạc.</p>
-                <button class="buy-ticket">Buy Ticket</button>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="background3.jpg" alt="Background 3">
-            <div class="content">
-                <h2>Địa điểm 3</h2>
-                <p>Ngày giờ: DD/MM/YYYY - HH:MM AM/PM</p>
-                <p>Mô tả: Mô tả chi tiết về sự kiện âm nhạc.</p>
-                <button class="buy-ticket">Buy Ticket</button>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="background4.jpg" alt="Background 4">
-            <div class="content">
-                <h2>Địa điểm 4</h2>
-                <p>Ngày giờ: DD/MM/YYYY - HH:MM AM/PM</p>
-                <p>Mô tả: Mô tả chi tiết về sự kiện âm nhạc.</p>
-                <button class="buy-ticket">Buy Ticket</button>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="background5.jpg" alt="Background 5">
-            <div class="content">
-                <h2>Địa điểm 5</h2>
-                <p>Ngày giờ: DD/MM/YYYY - HH:MM AM/PM</p>
-                <p>Mô tả: Mô tả chi tiết về sự kiện âm nhạc.</p>
-                <button class="buy-ticket">Buy Ticket</button>
-            </div>
-        </div>
-        <div class="card">
-            <img src="background6.jpg" alt="Background 6">
-            <div class="content">
-                <h2>Địa điểm 6</h2>
-                <p>Ngày giờ: DD/MM/YYYY - HH:MM AM/PM</p>
-                <p>Mô tả: Mô tả chi tiết về sự kiện âm nhạc.</p>
-                <button class="buy-ticket">Buy Ticket</button>
-            </div>
-        </div>
-        <div class="card">
-            <img src="background7.jpg" alt="Background 7">
-            <div class="content">
-                <h2>Địa điểm 7</h2>
-                <p>Ngày giờ: DD/MM/YYYY - HH:MM AM/PM</p>
-                <p>Mô tả: Mô tả chi tiết về sự kiện âm nhạc.</p>
-                <button class="buy-ticket">Buy Ticket</button>
-            </div>
-        </div>
-        <div class="card">
-            <img src="background4.jpg" alt="Background 4">
-            <div class="content">
-                <h2>Địa điểm 8</h2>
-                <p>Ngày giờ: DD/MM/YYYY - HH:MM AM/PM</p>
-                <p>Mô tả: Mô tả chi tiết về sự kiện âm nhạc.</p>
-                <button class="buy-ticket">Buy Ticket</button>
-            </div>
-        </div>
-        <div class="card">
-            <img src="background4.jpg" alt="Background 4">
-            <div class="content">
-                <h2>Địa điểm 9</h2>
-                <p>Ngày giờ: DD/MM/YYYY - HH:MM AM/PM</p>
-                <p>Mô tả: Mô tả chi tiết về sự kiện âm nhạc.</p>
-                <button class="buy-ticket">Buy Ticket</button>
-            </div>
-        </div>
+        <?php } ?>
     </div>
 </body>
 
