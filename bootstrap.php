@@ -6,7 +6,7 @@ if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
 } else {
     $web_root = 'http://' . $_SERVER['HTTP_HOST'];
 }
-define('_WEB_ROOT', $web_root . '/php/test_php');
+define('_WEB_ROOT', $web_root . '/php/web_band');
 
 $configs_dir = scandir('configs');
 if (!empty($configs_dir)) {
@@ -20,9 +20,9 @@ if (!empty($configs_dir)) {
 require_once 'core/Route.php';
 require_once 'src/App.php';
 
-if(!empty($config['database'])){
+if (!empty($config['database'])) {
     $db_config = array_filter($config['database']);
-    if(!empty($db_config)){
+    if (!empty($db_config)) {
         require_once 'core/Connection.php';
         require_once 'core/Database.php';
     }
