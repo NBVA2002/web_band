@@ -6,7 +6,6 @@ if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
     $web_root = 'http://' . $_SERVER['HTTP_HOST'];
 }
 define('_WEB_ROOT', $web_root . '/web_band');
-
 $configs_dir = scandir('configs');
 if (!empty($configs_dir)) {
     foreach ($configs_dir as $item) {

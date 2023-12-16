@@ -80,4 +80,13 @@ class Model extends Database
         }
         return false;
     }
+    public function findByEmail($table, $email)
+    {
+        $sql = "SELECT * FROM $table WHERE email = $email";
+        $query = $this->db->query($sql);
+        if (!empty($sql)) {
+            return $query->fetchAll(PDO::FETCH_ASSOC)[0];
+        }
+        return false;
+    }
 }
