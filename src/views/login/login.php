@@ -1,7 +1,3 @@
-<?php
-echo $err;
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,6 +39,18 @@ echo $err;
                     Don't have account &nbsp;
                     <a href="register.php">Create new</a>
                 </div>
+                <div id="err">
+                    <?php
+                    if ($err_email != '' || $err_password != '') {
+                    ?>
+                        <div class="alert alert-danger form-title" role="alert">
+                            <?php echo $err_email . $err_password
+                            ?>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                </div>
             </form>
         </div>
     </div>
@@ -53,20 +61,47 @@ echo $err;
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
     <script>
+        var err_alert = document.getElementById("err");
+        setTimeout(function() {
+            while (err_alert.firstChild) {
+                err_alert.removeChild(err_alert.firstChild);
+            }
+        }, 3000);
+
         function submitForm() {
             var form = document.getElementById("login-form").addEventListener("submit", function(event) {
                 event.preventDefault();
             });
             var email = document.getElementById("email")
             var password = document.getElementById("password")
+            var err_alert = document.getElementById("err");
 
             var err = [];
             if (email.value == "") {
-                err[0] = "Email is requỉed"
+                err[0] = "Email is required";
+                var err_email = document.createElement('div');
+                err_email.classList.add("alert");
+                err_email.classList.add("alert-danger");
+                err_email.classList.add("form-title");
+                const textnode = document.createTextNode(err[0]);
+                err_email.appendChild(textnode);
+                err_alert.appendChild(err_email);
             }
             if (password.value == "") {
-                err[1] = "Password is requỉed"
+                err[1] = "Password is required";
+                var err_password = document.createElement('div');
+                err_password.classList.add("alert");
+                err_password.classList.add("alert-danger");
+                err_password.classList.add("form-title");
+                const textnode = document.createTextNode(err[1]);
+                err_password.appendChild(textnode);
+                document.getElementById("err").appendChild(err_password);
             }
+            setTimeout(function() {
+                while (err_alert.firstChild) {
+                    err_alert.removeChild(err_alert.firstChild);
+                }
+            }, 3000);
             console.log(err)
 
             if (err.length == 0) {

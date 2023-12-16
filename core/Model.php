@@ -77,7 +77,6 @@ class Model extends Database
     public function findById($table, $id)
     {
         $sql = "SELECT * FROM $table WHERE id = $id";
-        echo $sql;
         $query = $this->db->query($sql);
         if (!empty($sql)) {
             return $query->fetchAll(PDO::FETCH_ASSOC)[0];

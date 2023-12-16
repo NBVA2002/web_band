@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -93,37 +92,6 @@
                     </ul>
 
                     <!-- place -->
-                    <!-- <div class="place-list">
-                        <div class="place-item">
-                            <img src="<?php echo _WEB_ROOT; ?>/public/assets/img/content/newyork.jpg" alt="newyork" class="place-img">
-                            <div class="place-body">
-                                <h3 class="place-heading">New York</h3>
-                                <p class="place-time">Fri 27 Nov 2016</p>
-                                <p class="place-decs">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <button class="place-buy-btn js-buy-ticket s-full-width ">Buy Tickets</button>
-                            </div>
-                        </div>
-
-                        <div class="place-item">
-                            <img src="<?php echo _WEB_ROOT; ?>/public/assets/img/content/paris.jpg" alt="paris" class="place-img">
-                            <div class="place-body">
-                                <h3 class="place-heading">Paris</h3>
-                                <p class="place-time">Sat 28 Nov 2016</p>
-                                <p class="place-decs">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <button class="place-buy-btn js-buy-ticket s-full-width ">Buy Tickets</button>
-                            </div>
-                        </div>
-
-                        <div class="place-item">
-                            <img src="<?php echo _WEB_ROOT; ?>/public/assets/img/content/sanfran.jpg" alt="San Francisco" class="place-img">
-                            <div class="place-body">
-                                <h3 class="place-heading">San Francisco</h3>
-                                <p class="place-time">Sun 29 Nov 2016</p>
-                                <p class="place-decs">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <button class="place-buy-btn js-buy-ticket s-full-width ">Buy Tickets</button>
-                            </div>
-                        </div>
-                    </div> -->
                     <div class="place-list">
                         <?php foreach ($tour_list as $tour) { ?>
                             <div class="place-item">
@@ -287,5 +255,4 @@
         }
     </script>
 </body>
-
 </html>
