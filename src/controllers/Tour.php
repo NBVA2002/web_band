@@ -13,16 +13,18 @@ class Tour extends Controller
     {
         echo "Danh sách Tour diễn";
     }
-    
-    public function list() {
-        $dataList  = $this->model_tour->getListModel();
+
+    public function list()
+    {
+        $dataList  = $this->model_tour->getListModel("WHERE id = 2");
         $this->data['tour_list'] = $dataList;
-        $this->render('tour/list',$this->data);
+        $this->render('tour/list', $this->data);
     }
 
-    public function detail($id) {
+    public function detail($id)
+    {
         $dataDetail  = $this->model_tour->getDetailModel($id);
         $this->data['tour_detail'] = $dataDetail;
-        $this->render('tour/detail',$this->data);
+        $this->render('tour/detail', $this->data);
     }
 }
