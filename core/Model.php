@@ -47,7 +47,7 @@ class Model extends Database
         return false;
     }
 
-    public function delete($table, $id) {
+    public function delete1($table, $id) {
         $sql = "DELETE FROM $table WHERE id = $id";
 
         $status = $this->db->query($sql);
@@ -74,15 +74,6 @@ class Model extends Database
     public function findById($table, $id)
     {
         $sql = "SELECT * FROM $table WHERE id = $id";
-        $query = $this->db->query($sql);
-        if (!empty($sql)) {
-            return $query->fetchAll(PDO::FETCH_ASSOC)[0];
-        }
-        return false;
-    }
-    public function findByEmail($table, $email)
-    {
-        $sql = "SELECT * FROM $table WHERE email = $email";
         $query = $this->db->query($sql);
         if (!empty($sql)) {
             return $query->fetchAll(PDO::FETCH_ASSOC)[0];

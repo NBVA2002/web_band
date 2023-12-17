@@ -6,28 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="<?php echo _WEB_ROOT; ?>/public/assets/css/styles.css">
-
     <!-- <link rel="stylesheet" href="./asset/css/responsive.css"> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 
 <body>
-
     <div class="container-fluid">
         <div class="row justify-content-md-center">
-            <form id="login-form" action="login.php" method="POST" class="col-md-4 form-login">
+            <form method="post" action="<?=_WEB_ROOT?>/login/authenticate" id="login-form" class="col-md-4 form-login">
                 <div class="d-flex justify-content-center  mt-5 mb-5">
                     <img src="<?php echo _WEB_ROOT; ?>/public/assets/img/item/143086968_2856368904622192_1959732218791162458_n.png" class="user-img" alt="">
                 </div>
                 <!-- <div class="form-title">LOGIN</div> -->
                 <div class="input-form">
                     <i class="fa-solid fa-user col-md-2 col-2"></i>
-                    <input id="email" type="email" name="email" class="col-md-8 col-8" placeholder="Email">
+                    <input id="email" name ="email" type="email" class="col-md-8 col-8" placeholder="Email">
                 </div>
                 <div class="input-form">
                     <i class="fa-solid fa-lock col-md-2  col-2"></i>
-                    <input id="password" name="psw" type="password" class="col-md-8  col-8" placeholder="Password">
+                    <input id="password" name="password" type="password" class="col-md-8  col-8" placeholder="Password">
                     <!-- <i cl ass="fa-solid fa-eye"></i> -->
                     <!-- <i class="fa-solid fa-eye-slash"></i> -->
                 </div>
@@ -35,11 +33,23 @@
                     <a style=" color: #ccc;" href="">Forgot password</a>
                 </div>
                 <div class="input-form" style="background-color: none">
-                    <button type="submit" name="tienhanhdangnhap" class="btn-login">Login</button>
+                    <button type="submit" onclick="submitForm()" class="btn-login">Login</button>
                 </div>
                 <div class="form-title" style="text-align: center; color: #ccc;">
                     Don't have account &nbsp;
                     <a href="register.php">Create new</a>
+                </div>
+                <div id="err">
+                    <?php
+                    if ($err_email != '' || $err_password != '') {
+                    ?>
+                        <div class="alert alert-danger form-title" role="alert">
+                            <?php echo $err_email . $err_password
+                            ?>
+                        </div>
+                    <?php
+                    }
+                    ?>
                 </div>
             </form>
         </div>
@@ -50,39 +60,56 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
-    <!-- <script>
-        function submitForm() {
-            var form = document.getElementById("login-form").addEventListener("submit", function(event) {
-                event.preventDefault();
-            });
-            var email = document.getElementById("email")
-            var password = document.getElementById("password")
-            if (email.value == "") {
-                console.log("Email is requỉed")
+    <script>
+        var err_alert = document.getElementById("err");
+        setTimeout(function() {
+            while (err_alert.firstChild) {
+                err_alert.removeChild(err_alert.firstChild);
             }
-            if (password.value == "") {
-                console.log("Password is requỉed")
-            }
-        }
-    </script> -->
+        }, 3000);
 
-    <?php
-    // include("config/connect.php");
+        // function submitForm() {
+        //     var form = document.getElementById("login-form").addEventListener("submit", function(event) {
+        //         event.preventDefault();
+        //     });
+        //     var email = document.getElementById("email")
+        //     var password = document.getElementById("password")
+        //     var err_alert = document.getElementById("err");
 
-    if (isset($_POST['tienhanhdangnhap'])) { // kiểm tra nút đăng nhập đã được bấm
-        $email = mysqli_real_escape_string($connect, $_POST['email']); // gán email = email trong form
-        echo $email;
-        $password = $_POST['psw']; // gán pw = pw trong form
-        $sqlcheckuser = "SELECT * FROM `user` WHERE `email` = '" . $email . "' AND `password` = '" . $password . "'"; // SQL lấy email và pw từ DB
-        $results = $connect->query($sqlcheckuser); // chạy câu lệnh SQL và lấy kết quả 
-        if ($results->num_rows > 0) { // đếm số dng trùng vs thông tin câu lệnh trên. Nếu > 0 => thông tin tồn tại
-            $user = $results->fetch_array(); // nạp thông tin vào mảng với từng key là thành cột trong bảng DB
-            require_once _DIR_ROOT . '/src/views/home/index.php';
-        } else {
-            echo "Dang nhap ko thanh cong";
-        }
-    }
-    ?>
+        //     var err = [];
+        //     if (email.value == "") {
+        //         err[0] = "Email is required";
+        //         var err_email = document.createElement('div');
+        //         err_email.classList.add("alert");
+        //         err_email.classList.add("alert-danger");
+        //         err_email.classList.add("form-title");
+        //         const textnode = document.createTextNode(err[0]);
+        //         err_email.appendChild(textnode);
+        //         err_alert.appendChild(err_email);
+        //     }
+        //     if (password.value == "") {
+        //         err[1] = "Password is required";
+        //         var err_password = document.createElement('div');
+        //         err_password.classList.add("alert");
+        //         err_password.classList.add("alert-danger");
+        //         err_password.classList.add("form-title");
+        //         const textnode = document.createTextNode(err[1]);
+        //         err_password.appendChild(textnode);
+        //         document.getElementById("err").appendChild(err_password);
+        //     }
+        //     setTimeout(function() {
+        //         while (err_alert.firstChild) {
+        //             err_alert.removeChild(err_alert.firstChild);
+        //         }
+        //     }, 3000);
+        //     console.log(err)
+
+        //     // if (err.length == 0) {
+        //     //     window.location.href = "<?php echo _WEB_ROOT; ?>/login/authenticate"
+        //     // }
+        // }
+    </script>
+
 </body>
 
 </html>

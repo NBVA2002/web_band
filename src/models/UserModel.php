@@ -21,7 +21,7 @@ class UserModel extends Model
 
     public function deleteUser($id)
     {
-        return parent::delete($this->_table, $id);
+        return parent::delete1($this->_table, $id);
     }
 
     public function getList()
@@ -33,8 +33,11 @@ class UserModel extends Model
     {
         return parent::findById($this->_table, $id);
     }
-    public function getDetailEmail($email)
-    {
-        return parent::findByEmail($this->_table, $email);
+    public function findByEmail($email) {
+        return parent::findAll($this->_table, "WHERE email = '".$email."'");
+    }
+    public function getUserCondition($condition) {
+
+        return parent::findAll($this->_table, $condition);
     }
 }
