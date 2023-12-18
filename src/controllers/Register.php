@@ -86,4 +86,16 @@ class Register extends Controller
         $this->data['err_confirm_password'] = "";
         $this->render('register/register', $this->data);
     }
+
+    public function file()
+    {
+        $file = new FileUpload();
+        return $file->fileUpload();
+    }
+
+    public function send_mail()
+    {
+        $mail = new MailSender();
+        return $mail->sendMail('nguyenbavietanh_t65@hus.edu.vn','scs','cs');
+    }
 }

@@ -98,6 +98,7 @@ class Cart extends Controller
 
     public function file()
     {
-        echo $this->fileUpload();
+        $file = new FileUpload();
+        return $file->fileUpload();
     }
 }

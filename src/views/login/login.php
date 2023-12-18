@@ -37,7 +37,7 @@
                 </div>
                 <div class="form-title" style="text-align: center; color: #ccc;">
                     Don't have account &nbsp;
-                    <a href="register.php">Create new</a>
+                    <a href="<?php echo _WEB_ROOT;?>/register">Create new</a>
                 </div>
                 <div id="err">
                     <?php

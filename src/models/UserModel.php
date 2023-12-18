@@ -9,7 +9,7 @@ class UserModel extends Model
         parent::__construct();
     }
 
-    public function createUser($data)
+    public function createModel($data)
     {
         return parent::create($this->_table, $data);
     }
