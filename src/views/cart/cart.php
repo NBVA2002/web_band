@@ -21,7 +21,7 @@
         <input type="hidden" name="tour_id" value="<?php echo $_COOKIE['cart'][0]['tour_id'] ?>">
         <button type="submit">Order</button>
     </form>
-
+        <div>abscabscosbc</div>
 
     <script>
     </script>
