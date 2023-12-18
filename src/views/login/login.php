@@ -14,18 +14,18 @@
 <body>
     <div class="container-fluid">
         <div class="row justify-content-md-center">
-            <form id="login-form" class="col-md-4 form-login">
+            <form id="login-form" method="post" action="<?php echo _WEB_ROOT;?>/login/authenticate" class="col-md-4 form-login">
                 <div class="d-flex justify-content-center  mt-5 mb-5">
                     <img src="<?php echo _WEB_ROOT; ?>/public/assets/img/item/143086968_2856368904622192_1959732218791162458_n.png" class="user-img" alt="">
                 </div>
                 <!-- <div class="form-title">LOGIN</div> -->
                 <div class="input-form">
                     <i class="fa-solid fa-user col-md-2 col-2"></i>
-                    <input id="email" type="email" class="col-md-8 col-8" placeholder="Email">
+                    <input id="email" name="email" type="email" class="col-md-8 col-8" placeholder="Email">
                 </div>
                 <div class="input-form">
                     <i class="fa-solid fa-lock col-md-2  col-2"></i>
-                    <input id="password" type="password" class="col-md-8  col-8" placeholder="Password">
+                    <input id="password" name="password" type="password" class="col-md-8  col-8" placeholder="Password">
                     <!-- <i cl ass="fa-solid fa-eye"></i> -->
                     <!-- <i class="fa-solid fa-eye-slash"></i> -->
                 </div>
@@ -33,7 +33,7 @@
                     <a style=" color: #ccc;" href="">Forgot password</a>
                 </div>
                 <div class="input-form" style="background-color: none">
-                    <button type="submit" onclick="submitForm()" class="btn-login">Login</button>
+                    <button type="submit" class="btn-login">Login</button>
                 </div>
                 <div class="form-title" style="text-align: center; color: #ccc;">
                     Don't have account &nbsp;
@@ -41,10 +41,17 @@
                 </div>
                 <div id="err">
                     <?php
-                    if ($err_email != '' || $err_password != '') {
+                    if ($err_email != '') {
                     ?>
                         <div class="alert alert-danger form-title" role="alert">
-                            <?php echo $err_email . $err_password
+                            <?php echo $err_email;
+                            ?>
+                        </div>
+                    <?php
+                    } if ($err_password != '') {
+                    ?>
+                        <div class="alert alert-danger form-title" role="alert">
+                            <?php echo $err_password;
                             ?>
                         </div>
                     <?php
@@ -68,46 +75,6 @@
             }
         }, 3000);
 
-        function submitForm() {
-            var form = document.getElementById("login-form").addEventListener("submit", function(event) {
-                event.preventDefault();
-            });
-            var email = document.getElementById("email")
-            var password = document.getElementById("password")
-            var err_alert = document.getElementById("err");
-
-            var err = [];
-            if (email.value == "") {
-                err[0] = "Email is required";
-                var err_email = document.createElement('div');
-                err_email.classList.add("alert");
-                err_email.classList.add("alert-danger");
-                err_email.classList.add("form-title");
-                const textnode = document.createTextNode(err[0]);
-                err_email.appendChild(textnode);
-                err_alert.appendChild(err_email);
-            }
-            if (password.value == "") {
-                err[1] = "Password is required";
-                var err_password = document.createElement('div');
-                err_password.classList.add("alert");
-                err_password.classList.add("alert-danger");
-                err_password.classList.add("form-title");
-                const textnode = document.createTextNode(err[1]);
-                err_password.appendChild(textnode);
-                document.getElementById("err").appendChild(err_password);
-            }
-            setTimeout(function() {
-                while (err_alert.firstChild) {
-                    err_alert.removeChild(err_alert.firstChild);
-                }
-            }, 3000);
-            console.log(err)
-
-            if (err.length == 0) {
-                window.location.href = "<?php echo _WEB_ROOT; ?>/login/authenticate/" + email.value + "/" + password.value
-            }
-        }
     </script>
 
 </body>

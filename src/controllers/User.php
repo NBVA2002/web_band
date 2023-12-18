@@ -212,4 +212,5 @@ class User extends Controller
         $this->data['tour_detail'] = $dataDetail;
         $this->render('tour/detail', $this->data);
     }
+
 }
