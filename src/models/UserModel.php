@@ -33,8 +33,9 @@ class UserModel extends Model
     {
         return parent::findById($this->_table, $id);
     }
-    public function getDetailEmail($email)
+    
+    public function findByEmail($email)
     {
-        return parent::findByEmail($this->_table, $email);
+        return parent::findAll($this->_table, "WHERE email = '".$email."'");
     }
 }

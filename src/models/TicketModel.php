@@ -31,4 +31,9 @@ class TicketModel extends Model{
     {
         return parent::findById($this->_table, $id);
     }
+
+    public function getTicketBuyTourId($id)
+    {
+        return parent::findAll($this->_table, "WHERE tour_id = '".$id."'");
+    }
 }
