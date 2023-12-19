@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="<?php echo _WEB_ROOT; ?>/public/assets/css/styles.css">
     <link rel="stylesheet" href="<?php echo _WEB_ROOT; ?>/src/views/user/style.css">
     <link rel="stylesheet" href="<?php echo _WEB_ROOT; ?>/public/assets/css/responsive.css">
     <link rel="stylesheet" href="<?php echo _WEB_ROOT; ?>/public/assets/icon/themify-icons/themify-icons.css">
@@ -35,7 +34,6 @@
                 </li>
             </ul>
             <!-- end nav -->
-
             <!-- mobile button -->
             <div id="mobile-menu" class="mobile-menu-btn">
                 <i class="menu-icon ti-menu"></i>
@@ -51,14 +49,46 @@
         </div>
     </div>
 
-    <div class="container d-flex" style="height: 100vh; background-color: red;">
+    <div class="container-fluid d-flex" style="height: 100vh; padding: 0">
         <div class="col-md-3 menu-container">
-
+            <div class="user-info d-flex flex-wrap justify-content-center">
+                <img class="avatar-img" src="<?php echo _WEB_ROOT; ?>/user/readfile/<?php echo $user_context['img_url'] ?>" alt="">
+                <div style="width: 100%; text-align: center;">Hello <?php echo $user_context['name'] ?></div>
+            </div>
+            <div class="menu-list">
+                <div id="info" class="menu-item menu-item-active" onclick="changeContent(1)"><i class="fa-solid fa-user"></i>&nbsp; USER INFOMATION</div>
+                <div id="order" class="menu-item" onclick="changeContent(2)"><i class="fa-solid fa-cart-shopping"></i>&nbsp; USER ORDER</div>
+                <form class="menu-item" action="<?php echo _WEB_ROOT; ?>/user/logout" method="post">
+                    <button type="submit" name="runLink"><i class="fa-solid fa-arrow-right-from-bracket"></i>&nbsp; LOGOUT</button>
+                </form>
+            </div>
         </div>
-        <div class="col-md-9 col-12 content-container" >
-            
+        <div class="col-md-9 col-12 content-container" id="content-container">
+            <div id="info-content">USER INFOMATION</div>
+            <div id="order-content">USER ORDER</div>
         </div>
     </div>
+
+    <script>
+        function changeContent(idContent) {
+            var content = document.getElementById("content-container")
+            var info = document.getElementById("info");
+            var order = document.getElementById("order");
+            var infoContent = document.getElementById("info-content");
+            var orderContent = document.getElementById("order-content");
+            if (idContent == 1) {
+                infoContent.style.display = "block"
+                orderContent.style.display = "none"
+                info.classList.add('menu-item-active');
+                order.classList.remove('menu-item-active');
+            } else if (idContent == 2) {
+                infoContent.style.display = "none"
+                orderContent.style.display = "block"
+                info.classList.remove('menu-item-active');
+                order.classList.add('menu-item-active');
+            }
+        }
+    </script>
 
     <script>
         var header = document.getElementById('header');

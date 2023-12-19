@@ -3,18 +3,36 @@ class User extends Controller
 {
     public $data = [];
     public $model_user;
+    public $file;
 
     public function __construct()
     {
+        $this->file = new FileUpload();
         $this->model_user = $this->model('UserModel');
     }
 
     public function index()
     {
-        // echo 'snsc';
-        // $dataList  = $this->model_admin->getList();
-        // $this->data['tour_list'] = $dataList;
+        $dataUser  = $this->model_user->getDetail($_SESSION['id']);
+        $this->data['user_context'] = $dataUser;
+
         $this->render('user/user',$this->data);
-        // $this->model_admin = $this->delete(2);
+    }
+
+    public function logout()
+    {
+        session_destroy();
+        Header("Location:" . _WEB_ROOT . "/home");
+    }
+
+    public function fileupload()
+    {
+        $this->file->fileUpload('user/');
+        $this->index();
+    }
+
+    public function readfile($imgName)
+    {
+        $this->file->getFileContent('user/'.$imgName);
     }
 }
