@@ -14,32 +14,18 @@
 <body>
     <div class="container-fluid">
         <div class="row justify-content-md-center">
-            <form id="login-form" method="post" action="<?php echo _WEB_ROOT;?>/login/authenticate" class="col-md-4 form-login">
+            <form id="login-form" method="post" action="<?php echo _WEB_ROOT; ?>/forgot/authenticate" class="col-md-4 form-login">
                 <div class="d-flex justify-content-center  mt-5 mb-5">
-                    <img src="<?php echo _WEB_ROOT; ?>/public/assets/img/item/143086968_2856368904622192_1959732218791162458_n.png" class="user-img" alt="">
+                    <div class="form-title mt-5" style="font-size: 30px;font-weight: 500;color: #fff;">FORGOT PASSWORD</div>
                 </div>
-                <!-- <div class="form-title">LOGIN</div> -->
                 <div class="input-form">
                     <i class="fa-solid fa-user col-md-2 col-2"></i>
                     <input id="email" name="email" type="email" class="col-md-8 col-8" placeholder="Email">
                 </div>
-                <div class="input-form">
-                    <i class="fa-solid fa-lock col-md-2  col-2"></i>
-                    <input id="password" name="password" type="password" class="col-md-8  col-8" placeholder="Password">
-                    <!-- <i cl ass="fa-solid fa-eye"></i> -->
-                    <!-- <i class="fa-solid fa-eye-slash"></i> -->
-                </div>
-                <div class="form-title" style="text-align: end;">
-                    <a style=" color: #ccc;" href="<?php echo _WEB_ROOT;?>/forgot">Forgot password</a>
-                </div>
                 <div class="input-form" style="background-color: none">
-                    <button type="submit" class="btn-login">Login</button>
+                    <button type="submit" class="btn-login">Send mail</button>
                 </div>
-                <div class="form-title" style="text-align: center; color: #ccc;">
-                    Don't have account &nbsp;
-                    <a href="<?php echo _WEB_ROOT;?>/register">Create new</a>
-                </div>
-                <div id="err">
+                <div id="err" class="mt-2">
                     <?php
                     if ($err_email != '') {
                     ?>
@@ -48,11 +34,11 @@
                             ?>
                         </div>
                     <?php
-                    } 
-                    if ($err_password != '') {
+                    }
+                    if ($success != '') {
                     ?>
-                        <div class="alert alert-danger form-title" role="alert">
-                            <?php echo $err_password;
+                        <div class="alert alert-success form-title" role="alert">
+                            <?php echo $success;
                             ?>
                         </div>
                     <?php
@@ -75,7 +61,6 @@
                 err_alert.removeChild(err_alert.firstChild);
             }
         }, 3000);
-
     </script>
 
 </body>

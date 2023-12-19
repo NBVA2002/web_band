@@ -17,7 +17,7 @@
         <div id="header">
             <!-- begin nav -->
             <ul id="nav">
-                <li><a href="#">Home</a></li>
+                <li><a href="<?php echo _WEB_ROOT; ?>/home">Home</a></li>
                 <li><a href="#band">Band</a></li>
                 <li><a href="#tour">Tour</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -64,8 +64,26 @@
             </div>
         </div>
         <div class="col-md-9 col-12 content-container" id="content-container">
-            <div id="info-content">USER INFOMATION</div>
-            <div id="order-content">USER ORDER</div>
+            <div id="info-content">
+                USER INFOMATION
+                <form method="post" action="<?php echo _WEB_ROOT; ?>/user/update">
+                    <input type="email" name="email" value="<?php echo $user_context['email'] ?>">
+                    <input type="password" name="password">
+                    <input type="text" name="name" value="<?php echo $user_context['name'] ?>">
+                    <input type="number" min="0" name="phone" value="<?php echo $user_context['phone'] ?>">
+                    <input type="text" name="address" value="<?php echo $user_context['address'] ?>">
+                    <button type="submit" class="btn-login">Save</button>
+                </form>
+                <form action="<?php echo _WEB_ROOT ?>/user/change_avatar" method="post" enctype="multipart/form-data">
+                    Select image to upload:
+                    <input type="file" name="fileToUpload" id="fileToUpload">
+                    <input type="submit" value="Upload Image" name="submit">
+                </form>
+            </div>
+            <div id="order-content">
+                USER ORDER
+
+            </div>
         </div>
     </div>
 

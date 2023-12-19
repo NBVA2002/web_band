@@ -39,7 +39,6 @@ class Model extends Database
             $updateStr = rtrim($updateStr, ',');
 
             $sql = "UPDATE $table SET $updateStr WHERE id = $id";
-            echo $sql;
 
             $status = $this->db->query($sql);
             if ($status) {

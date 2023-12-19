@@ -51,9 +51,9 @@ class MailSender
             $this->mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
             $this->mail->send();
-            echo 'Message has been sent';
+            return 'Message has been sent';
         } catch (Exception $e) {
-            echo "Message could not be sent. Mailer Error: {$this->mail->ErrorInfo}";
+            return "Message could not be sent. Mailer Error: {$this->mail->ErrorInfo}";
         }
     }
 

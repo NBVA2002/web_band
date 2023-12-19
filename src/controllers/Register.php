@@ -9,6 +9,17 @@ class Register extends Controller
         $this->model_user = $this->model('UserModel');
     }
 
+    public function index()
+    {
+        $this->data['err_name'] = "";
+        $this->data['err_phone'] = "";
+        $this->data['err_email'] = "";
+        $this->data['err_address'] = "";
+        $this->data['err_password'] = "";
+        $this->data['err_confirm_password'] = "";
+        $this->render('register/register', $this->data);
+    }
+
     public function authenticate()
     {
         $name = $_POST['name'];
@@ -64,6 +75,7 @@ class Register extends Controller
                 'create_date' => $formattedDateTime,
             ];
             $this->model_user->createModel($data_request);
+            Header("Location:" . _WEB_ROOT . "/login");
         } else {
             $this->data['err_name'] = $err_validate['err_name'];
             $this->data['err_phone'] = $err_validate['err_phone'];
@@ -74,17 +86,6 @@ class Register extends Controller
             $this->render('register/register', $this->data);
         }
         // $user = $this->model_user->findByEmail($email);
-    }
-
-    public function index()
-    {
-        $this->data['err_name'] = "";
-        $this->data['err_phone'] = "";
-        $this->data['err_email'] = "";
-        $this->data['err_address'] = "";
-        $this->data['err_password'] = "";
-        $this->data['err_confirm_password'] = "";
-        $this->render('register/register', $this->data);
     }
 
     public function fileupload()

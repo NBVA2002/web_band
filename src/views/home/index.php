@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,121 +44,122 @@
             <div class="search-btn">
                 <div class="search-icon ti-search"></div>
             </div>
-            <div class="search-btn">
+            <a class="search-btn" href="<?php echo _WEB_ROOT; ?>/user">
                 <i class="fa-solid fa-user search-icon" style="color:#fff"></i>
-            </div>
+            </a>
         </div>
+    </div>
 
-        <div id="slider">
-            <div class="text-content">
-                <h2 class="text-heading">Chicago</h2>
-                <div class="text-description">Thank you, Chicago - A night we won't forget.</div>
-            </div>
+    <div id="slider">
+        <div class="text-content">
+            <h2 class="text-heading">Chicago</h2>
+            <div class="text-description">Thank you, Chicago - A night we won't forget.</div>
         </div>
+    </div>
 
-        <div id="content">
-            <!-- about-section -->
-            <div id="band" class="content-section">
-                <h2 class="header-section">THE BAND</h2>
-                <div class="content-sub-section">We love music</div>
-                <p class="about-text">We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <div id="content">
+        <!-- about-section -->
+        <div id="band" class="content-section">
+            <h2 class="header-section">THE BAND</h2>
+            <div class="content-sub-section">We love music</div>
+            <p class="about-text">We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
-                <div class="member-list">
-                    <div class="member-item">
-                        <p class="member-name">Name</p>
-                        <img src="<?php echo _WEB_ROOT; ?>/public/assets/img/content/bandmember.jpg" alt="name" class="member-img">
-                    </div>
-                    <div class="member-item">
-                        <p class="member-name">Name</p>
-                        <img src="<?php echo _WEB_ROOT; ?>/public/assets/img/content/bandmember.jpg" alt="name" class="member-img">
-                    </div>
-                    <div class="member-item">
-                        <p class="member-name">Name</p>
-                        <img src="<?php echo _WEB_ROOT; ?>/public/assets/img/content/bandmember.jpg" alt="name" class="member-img">
-                    </div>
+            <div class="member-list">
+                <div class="member-item">
+                    <p class="member-name">Name</p>
+                    <img src="<?php echo _WEB_ROOT; ?>/public/assets/img/content/bandmember.jpg" alt="name" class="member-img">
                 </div>
-            </div>
-
-            <!-- Tour-section -->
-            <div id="tour" class="tour-section">
-                <div class="content-section">
-                    <h2 class="header-section text-whith">TOUR DATES</h2>
-                    <div class="content-sub-section text-whith">Remember to book your tickets!</div>
-
-                    <!-- tickets-list -->
-                    <ul class="tickets-list">
-                        <li>September <span class="sold-out">Sold Out</span></li>
-                        <li>September <span class="sold-out">Sold Out</span></li>
-                        <li>October <span class="quatily text-whith">3</span></li>
-                    </ul>
-
-                    <!-- place -->
-                    <div class="place-list">
-                        <?php foreach ($tour_list as $tour) { ?>
-                            <div class="place-item">
-                                <img src="<?php echo _WEB_ROOT; ?>/public/assets/img/content/sanfran.jpg" alt="San Francisco" class="place-img">
-                                <div class="place-body">
-                                    <h3 class="place-heading"><?php echo $tour['address'] ?></h3>
-                                    <p class="place-time"><?php echo $tour['date'] ?></p>
-                                    <p class="place-decs"><?php echo $tour['description'] ?></p>
-                                    <button class="place-buy-btn js-buy-ticket s-full-width ">Buy Tickets</button>
-                                </div>
-                            </div>
-                        <?php } ?>
-                    </div>
+                <div class="member-item">
+                    <p class="member-name">Name</p>
+                    <img src="<?php echo _WEB_ROOT; ?>/public/assets/img/content/bandmember.jpg" alt="name" class="member-img">
                 </div>
-
-            </div>
-
-            <!-- contact-section -->
-            <div id="contact" class="content-section">
-                <h2 class="header-section">CONTACT</h2>
-                <div class="content-sub-section">Fan? Drop a note!</div>
-
-                <div class="row contact-content">
-                    <div class="col col-half s-col-full contact-info">
-                        <p><i class="ti-location-pin"></i>Chicago, US</p>
-                        <p><i class="ti-mobile"></i>Phone: <a href="tel:+00 151515">+00 151515</a></p>
-                        <p><i class="ti-email"></i>Email: <a href="mailto:mail@mail.com">mail@mail.com</a></p>
-                    </div>
-                    <div class="col col-half s-col-full contact-form">
-                        <form action="">
-                            <div class="row">
-                                <div class="col col-half s-col-full">
-                                    <input type="text" placeholder="Name" required name="" id="" class="from-control">
-                                </div>
-
-                                <div class="col col-half s-col-full s-mt-8">
-                                    <input type="text" placeholder="Email" required name="" id="" class="from-control">
-                                </div>
-                            </div>
-                            <div class="row mt-8">
-                                <div class="col col-full">
-                                    <input type="text" placeholder="Message" required name="" id="" class="from-control">
-                                </div>
-                            </div>
-                            <input class="form-submit-btn mt-16 s-full-width" type="submit" value="SEND">
-                        </form>
-                    </div>
+                <div class="member-item">
+                    <p class="member-name">Name</p>
+                    <img src="<?php echo _WEB_ROOT; ?>/public/assets/img/content/bandmember.jpg" alt="name" class="member-img">
                 </div>
             </div>
         </div>
-        <div class="map-section">
-            <img src="<?php echo _WEB_ROOT; ?>/public/assets/img/footer/map.jpg" alt="map">
-        </div>
-        <div id="footer">
-            <div class="socials-list">
-                <a href=""><i class="ti-facebook"></i></a>
-                <a href=""><i class="ti-instagram"></i></a>
-                <a href=""><i class="ti-youtube"></i></a>
-                <a href=""><i class="ti-pinterest"></i></a>
-                <a href=""><i class="ti-twitter"></i></a>
-                <a href=""><i class="ti-linkedin"></i></a>
+
+        <!-- Tour-section -->
+        <div id="tour" class="tour-section">
+            <div class="content-section">
+                <h2 class="header-section text-whith">TOUR DATES</h2>
+                <div class="content-sub-section text-whith">Remember to book your tickets!</div>
+
+                <!-- tickets-list -->
+                <ul class="tickets-list">
+                    <li>September <span class="sold-out">Sold Out</span></li>
+                    <li>September <span class="sold-out">Sold Out</span></li>
+                    <li>October <span class="quatily text-whith">3</span></li>
+                </ul>
+
+                <!-- place -->
+                <div class="place-list">
+                    <?php foreach ($tour_list as $tour) { ?>
+                        <div class="place-item">
+                            <img src="<?php echo _WEB_ROOT; ?>/public/assets/img/content/sanfran.jpg" alt="San Francisco" class="place-img">
+                            <div class="place-body">
+                                <h3 class="place-heading"><?php echo $tour['address'] ?></h3>
+                                <p class="place-time"><?php echo $tour['date'] ?></p>
+                                <p class="place-decs"><?php echo $tour['description'] ?></p>
+                                <button class="place-buy-btn js-buy-ticket s-full-width ">Buy Tickets</button>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
             </div>
-            <p class="copy-right">
-                Powered by <a href=""> w3.css</a>
-            </p>
+
         </div>
+
+        <!-- contact-section -->
+        <div id="contact" class="content-section">
+            <h2 class="header-section">CONTACT</h2>
+            <div class="content-sub-section">Fan? Drop a note!</div>
+
+            <div class="row contact-content">
+                <div class="col col-half s-col-full contact-info">
+                    <p><i class="ti-location-pin"></i>Chicago, US</p>
+                    <p><i class="ti-mobile"></i>Phone: <a href="tel:+00 151515">+00 151515</a></p>
+                    <p><i class="ti-email"></i>Email: <a href="mailto:mail@mail.com">mail@mail.com</a></p>
+                </div>
+                <div class="col col-half s-col-full contact-form">
+                    <form action="">
+                        <div class="row">
+                            <div class="col col-half s-col-full">
+                                <input type="text" placeholder="Name" required name="" id="" class="from-control">
+                            </div>
+
+                            <div class="col col-half s-col-full s-mt-8">
+                                <input type="text" placeholder="Email" required name="" id="" class="from-control">
+                            </div>
+                        </div>
+                        <div class="row mt-8">
+                            <div class="col col-full">
+                                <input type="text" placeholder="Message" required name="" id="" class="from-control">
+                            </div>
+                        </div>
+                        <input class="form-submit-btn mt-16 s-full-width" type="submit" value="SEND">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="map-section">
+        <img src="<?php echo _WEB_ROOT; ?>/public/assets/img/footer/map.jpg" alt="map">
+    </div>
+    <div id="footer">
+        <div class="socials-list">
+            <a href=""><i class="ti-facebook"></i></a>
+            <a href=""><i class="ti-instagram"></i></a>
+            <a href=""><i class="ti-youtube"></i></a>
+            <a href=""><i class="ti-pinterest"></i></a>
+            <a href=""><i class="ti-twitter"></i></a>
+            <a href=""><i class="ti-linkedin"></i></a>
+        </div>
+        <p class="copy-right">
+            Powered by <a href=""> w3.css</a>
+        </p>
+    </div>
     </div>
 
     <div class="modal">
@@ -255,4 +257,5 @@
         }
     </script>
 </body>
+
 </html>

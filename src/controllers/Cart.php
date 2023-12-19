@@ -40,7 +40,7 @@ class Cart extends Controller
             $cart[$i]['tour_id'] = $this->model_tour->getDetailModel($cart[$i]['tour_id']);
         }
         $this->data['cart_list'] = $cart;
-        $this->render('cart/cart', $this->data);
+        $this->render('cart/cart2', $this->data);
     }
 
     public function create()

@@ -14,19 +14,19 @@ class UserModel extends Model
         return parent::create($this->_table, $data);
     }
 
-    public function updateHome($id, $data)
+    public function updateModel($id, $data)
     {
         return parent::update($this->_table, $id, $data);
     }
 
-    public function deleteUser($id)
+    public function deleteModel($id)
     {
         return parent::delete($this->_table, $id);
     }
 
-    public function getList()
+    public function getList($condition='')
     {
-        return parent::findAll($this->_table);
+        return parent::findAll($this->_table,$condition);
     }
 
     public function getDetail($id)
