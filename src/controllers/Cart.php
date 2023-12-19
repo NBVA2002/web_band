@@ -7,9 +7,11 @@ class Cart extends Controller
     public $model_order_line;
     public $model_ticket;
     public $model_tour;
+    public $file;
 
     public function __construct()
     {
+        $this->file = new FileUpload();
         $this->model_user = $this->model('UserModel');
         $this->model_order = $this->model('OrderModel');
         $this->model_order_line = $this->model('OrderLineModel');
@@ -96,11 +98,14 @@ class Cart extends Controller
         // $this->render('tour/detail', $this->data);
     }
 
-    public function file()
+    public function fileupload()
     {
-        $file = new FileUpload();
-        $file->fileUpload('user/');
-        // $this->render('tour/detail', $this->data);
+        $this->file->fileUpload('user/');
         $this->index();
+    }
+
+    public function readfile($imgFolder, $imgName)
+    {
+        $this->file->getFileContent($imgFolder.'/'.$imgName);
     }
 }

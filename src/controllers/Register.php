@@ -87,10 +87,16 @@ class Register extends Controller
         $this->render('register/register', $this->data);
     }
 
-    public function file()
+    public function fileupload()
     {
         $file = new FileUpload();
         return $file->fileUpload('user/');
+    }
+
+    public function readfile($imgFolder, $imgName)
+    {
+        $file = new FileUpload();
+        return $file->getFileContent($imgFolder.'/'.$imgName);
     }
 
     public function send_mail()

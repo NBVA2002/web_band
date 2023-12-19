@@ -52,5 +52,21 @@ class FileUpload {
             }
         }
     }
+
+    public function getFileContent($url) {
+        $imagePath = 'upload/'.$url;
+
+        // Đọc dữ liệu từ file ảnh
+        $imageData = file_get_contents($imagePath);
+        
+        // Xác định kiểu MIME của file ảnh
+        $mime = mime_content_type($imagePath);
+        
+        // Thiết lập header để hiển thị hình ảnh
+        header('Content-Type: ' . $mime);
+        
+        // Xuất dữ liệu ảnh
+        echo $imageData;
+    }
 }
 ?>
