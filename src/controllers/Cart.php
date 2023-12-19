@@ -99,6 +99,8 @@ class Cart extends Controller
     public function file()
     {
         $file = new FileUpload();
-        return $file->fileUpload();
+        $file->fileUpload('user/');
+        // $this->render('tour/detail', $this->data);
+        $this->index();
     }
 }

@@ -90,7 +90,7 @@ class Register extends Controller
     public function file()
     {
         $file = new FileUpload();
-        return $file->fileUpload();
+        return $file->fileUpload('user/');
     }
 
     public function send_mail()

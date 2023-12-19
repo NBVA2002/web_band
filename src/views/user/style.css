@@ -1,0 +1,9 @@
+.menu-container {
+    height: 100%;
+    background-color: blue;
+}
+
+.content-container {
+    height: 100%; 
+    background-color: green;
+}
