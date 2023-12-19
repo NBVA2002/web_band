@@ -21,9 +21,6 @@ class Cart extends Controller
 
     public function index()
     {
-        if (!isset($_COOKIE['cart'])) {
-            setcookie("cart", json_encode([]), time() + (86400 * 30), "/"); // 86400 = 1 day
-        }
         // setcookie("cart", json_encode([
         //     [
         //         'tour_id' => 1,
@@ -83,6 +80,7 @@ class Cart extends Controller
             }
         }
 
+        setcookie("cart", json_encode([]), time() + (86400 * 30), "/"); // 86400 = 1 day
         echo '<pre>';
         print_r($order);
         echo '</pre>';
