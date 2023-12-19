@@ -14,7 +14,7 @@
 <body>
     <div class="container-fluid">
         <div class="row justify-content-md-center">
-            <form id="login-form" method="post" action="<?php echo _WEB_ROOT; ?>/change/authenticate" class="col-md-4 form-login">
+            <form id="login-form" method="post" action="<?php echo _WEB_ROOT; ?>/change/authenticate/<?php echo $reset_token; ?>" class="col-md-4 form-login">
                 <div class="d-flex justify-content-center  mt-5 mb-5">
                     <div class="form-title mt-5" style="font-size: 30px;font-weight: 500;color: #fff;">CHANGE PASSWORD</div>
                 </div>

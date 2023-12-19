@@ -18,20 +18,7 @@
             <!-- begin nav -->
             <ul id="nav">
                 <li><a href="<?php echo _WEB_ROOT; ?>/home">Home</a></li>
-                <li><a href="#band">Band</a></li>
-                <li><a href="#tour">Tour</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li>
-                    <a href="#">
-                        More
-                        <i class="nav-icon ti-angle-down"></i>
-                    </a>
-                    <ul class="subnav">
-                        <li><a href="#">Merchandise</a></li>
-                        <li><a href="#">Extras</a></li>
-                        <li><a href="#">Media</a></li>
-                    </ul>
-                </li>
+                
             </ul>
             <!-- end nav -->
             <!-- mobile button -->
@@ -40,12 +27,6 @@
             </div>
 
             <!-- search button -->
-            <div class="search-btn">
-                <div class="search-icon ti-search"></div>
-            </div>
-            <div class="search-btn">
-                <i class="fa-solid fa-user search-icon" style="color:#fff"></i>
-            </div>
         </div>
     </div>
 

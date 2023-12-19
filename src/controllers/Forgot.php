@@ -19,15 +19,20 @@ class Forgot extends Controller
     public function authenticate()
     {
         $email = $_POST['email'];
-        $user = $this->model_user->findByEmail($email);
+        $user = ($this->model_user->findByEmail($email))[0];
         if ($email == '') {
             $this->data['err_email'] = "Email is required";
             $this->data['success'] = "";
             $this->render('forgot/forgot', $this->data);
         } else {
-            if (isset($user[0])) {
+            if (isset($user)) {
+                $length = 32;
+                $randomBytes = openssl_random_pseudo_bytes($length);
+                $token = bin2hex($randomBytes);
+                $user['reset_token'] = $token;
+                $this->model_user->updateModel($user['id'], $user);
                 $mail = new MailSender();
-                $mail->sendMail($email, 'scs', 'cs');
+                $mail->sendMail($email, 'Password reset', '<a href="'._WEB_ROOT.'/change/index/'.$token.'">Enter the link to reset password</a>');
                 $this->data['err_email'] = "";
                 $this->data['success'] = "Success check mail";
                 $this->render('forgot/forgot', $this->data);
@@ -38,5 +43,4 @@ class Forgot extends Controller
             }
         }
     }
-
 }

@@ -14,7 +14,7 @@ class User extends Controller
     public function index()
     {
         if (isset($_SESSION['id'])) {
-            $dataUser  = $this->model_user->getDetail($_SESSION['id']);
+            $dataUser  = $this->model_user->getDetailModel($_SESSION['id']);
             $this->data['user_context'] = $dataUser;
             $this->render('user/user', $this->data);
         } else {
@@ -41,7 +41,7 @@ class User extends Controller
     public function change_avatar()
     {
         $filename = $_FILES["fileToUpload"]["name"];
-        $dataUser  = $this->model_user->getDetail($_SESSION['id']);
+        $dataUser  = $this->model_user->getDetailModel($_SESSION['id']);
         $dataUser['img_url'] = $filename;
         $this->model_user->updateModel($_SESSION['id'], $dataUser);
 

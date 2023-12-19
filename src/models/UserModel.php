@@ -24,12 +24,12 @@ class UserModel extends Model
         return parent::delete($this->_table, $id);
     }
 
-    public function getList($condition='')
+    public function getListModel($condition='')
     {
         return parent::findAll($this->_table,$condition);
     }
 
-    public function getDetail($id)
+    public function getDetailModel($id)
     {
         return parent::findById($this->_table, $id);
     }
@@ -37,5 +37,10 @@ class UserModel extends Model
     public function findByEmail($email)
     {
         return parent::findAll($this->_table, "WHERE email = '".$email."'");
+    }
+
+    public function resetPassword($reset_token)
+    {
+        return parent::findAll($this->_table, "WHERE reset_token = '".$reset_token."'");
     }
 }

@@ -22,9 +22,9 @@ class TicketModel extends Model{
         return parent::delete($this->_table, $id);
     }
 
-    public function getListModel()
+    public function getListModel($condition = '')
     {
-        return parent::findAll($this->_table);
+        return parent::findAll($this->_table, $condition);
     }
 
     public function getDetailModel($id)
@@ -32,8 +32,8 @@ class TicketModel extends Model{
         return parent::findById($this->_table, $id);
     }
 
-    public function getTicketBuyTourId($id)
+    public function getTicketInStock($id, $quantity)
     {
-        return parent::findAll($this->_table, "WHERE tour_id = '".$id."'");
+        return parent::findAll($this->_table, "WHERE tour_id = ".$id." AND status = 'IN_STOCK' LIMIT ".$quantity);
     }
 }

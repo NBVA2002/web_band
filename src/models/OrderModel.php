@@ -31,4 +31,9 @@ class OrderModel extends Model{
     {
         return parent::findById($this->_table, $id);
     }
+    
+    public function getLastModel()
+    {
+        return parent::findAll($this->_table, 'ORDER BY id DESC LIMIT 1;');
+    }
 }

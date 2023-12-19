@@ -41,12 +41,16 @@
             </div>
 
             <!-- search button -->
-            <div class="search-btn">
-                <div class="search-icon ti-search"></div>
-            </div>
+            
+            <a class="search-btn" href="<?php echo _WEB_ROOT; ?>/cart">
+                <i class="fa-solid fa-cart-shopping search-icon" style="color:#fff"></i>
+            </a>
             <a class="search-btn" href="<?php echo _WEB_ROOT; ?>/user">
                 <i class="fa-solid fa-user search-icon" style="color:#fff"></i>
             </a>
+            <div class="search-btn">
+                <div class="search-icon ti-search"></div>
+            </div>
         </div>
     </div>
 

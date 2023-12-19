@@ -36,29 +36,56 @@ class Cart extends Controller
         // ]), time() + (86400 * 30), "/");
 
         $cart = json_decode($_COOKIE['cart'], true);
-        for($i = 0; $i < sizeof($cart); $i++) {
+        for ($i = 0; $i < sizeof($cart); $i++) {
             $cart[$i]['tour_id'] = $this->model_tour->getDetailModel($cart[$i]['tour_id']);
         }
+
         $this->data['cart_list'] = $cart;
-        $this->render('cart/cart2', $this->data);
+
+        $this->render('cart/cart', $this->data);
     }
 
     public function create()
     {
-        // $dataUser = $this->model_user->getDetailModel($_SESSION['id']);
-        // $currentDateTime = new DateTime();
-        // $formattedDateTime = $currentDateTime->format('Y-m-d H:i:s');
-        // $data_request = [
-        //     'address' => $dataUser['address'],
-        //     'order_date' => $formattedDateTime,
-        //     'order_date' => $formattedDateTime,
-        //     'user_id' => $dataUser['id'],
-        //     'total_price' => $dataUser['id'],
-        // ];
-        // return $this->model_order->createModel($data_request);
+        $ticket = [];
+        $totalPrice = [];
+        $cart = json_decode($_COOKIE['cart'], true);
+        for ($i = 0; $i < sizeof($cart); $i++) {
+            $ticket[$i] = $this->model_ticket->getTicketInStock($cart[$i]['tour_id'], $cart[$i]['quantity']);
+            $totalPrice[$i] = 0;
+            for ($j = 0; $j < sizeof($ticket[$i]); $j++) {
+                $ticket[$i][$j]['status'] = 'OUT_OF_STOCK';
+                $totalPrice[$i] = $totalPrice[$i] + $ticket[$i][$j]['price'];
+                $this->model_ticket->updateModel($ticket[$i][$j]['id'], $ticket[$i][$j]);
+            }
+        }
 
-        $tour_id = $_POST['tour_id'];
-        echo $tour_id;
+        $dataUser = $this->model_user->getDetailModel($_SESSION['id']);
+        $currentDateTime = new DateTime();
+        $formattedDateTime = $currentDateTime->format('Y-m-d H:i:s');
+        $dataOrder = [
+            'address' => $dataUser['address'],
+            'order_date' => $formattedDateTime,
+            'user_id' => $dataUser['id'],
+            'total_price' => array_sum($totalPrice),
+        ];
+        $this->model_order->createModel($dataOrder);
+        $order = ($this->model_order->getLastModel())[0];
+
+        for ($i = 0; $i < sizeof($ticket); $i++) {
+            for ($j = 0; $j < sizeof($ticket[$i]); $j++) {
+                $dataOrderLine = [
+                    'ticket_id' => $ticket[$i][$j]['id'],
+                    'order_id' => $order['id'],
+                    'price' => $ticket[$i][$j]['price'],
+                ];
+                $this->model_order_line->createModel($dataOrderLine);
+            }
+        }
+
+        echo '<pre>';
+        print_r($order);
+        echo '</pre>';
     }
 
     public function update($id)
@@ -106,6 +133,6 @@ class Cart extends Controller
 
     public function readfile($imgFolder, $imgName)
     {
-        $this->file->getFileContent($imgFolder.'/'.$imgName);
+        $this->file->getFileContent($imgFolder . '/' . $imgName);
     }
 }

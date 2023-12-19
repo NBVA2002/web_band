@@ -10,16 +10,17 @@ class Change extends Controller
         $this->model_user = $this->model('UserModel');
     }
 
-    public function index($email)
+    public function index($reset_token)
     {
-        $this->user = $this->model_user->findByEmail($email);;
+        $this->data['reset_token'] = $reset_token;
         $this->data['err_password'] = "";
         $this->data['err_confirm_password'] = "";
         $this->render('change/change', $this->data);
     }
 
-    public function authenticate()
+    public function authenticate($reset_token)
     {
+        $this->user = ($this->model_user->resetPassword($reset_token))[0];
         $password = $_POST['password'];
         $confirmPassword = $_POST['confirm_password'];
 
@@ -41,17 +42,9 @@ class Change extends Controller
             $options = [
                 'cost' => 11
             ];
-            $data_request = [
-                'name' => $this->user['name'],
-                'phone' => $this->user['phone'],
-                'email' => $this->user['email'],
-                'password' => password_hash($password, PASSWORD_BCRYPT, $options),
-                'address' => $this->user['address'],
-                'role' => $this->user['role'],
-                'create_date' => $this->user['create_date'],
-            ];
-            // $this->model_user->updateModel($user['id'], $data_request);
-            // Header("Location:" . _WEB_ROOT . "/login");
+            $this->user['password'] = password_hash($password, PASSWORD_BCRYPT, $options);
+            $this->model_user->updateModel($this->user['id'], $this->user);
+            Header("Location:" . _WEB_ROOT . "/login");
         } else {
             $this->data['err_password'] = $err_validate['err_password'];
             $this->data['err_confirm_password'] = $err_validate['err_confirm_password'];
