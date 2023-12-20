@@ -111,8 +111,10 @@
                         </div>
                     <?php } ?>
                 </div>
+                <div style="display: flex; justify-content: end; margin-top:10px">
+                    <a href="<?php echo _WEB_ROOT."/tour/list"?>" style="color: #fff;">Show more</a>
+                </div>
             </div>
-
         </div>
 
         <!-- contact-section -->
