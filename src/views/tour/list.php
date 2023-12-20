@@ -74,7 +74,7 @@
 <body>
 
     <div class="container">
-        <!-- Thẻ trên -->
+
         <?php foreach ($tour_list as $tour) { ?>
             <div class="card">
                 <img src="<?php echo _WEB_ROOT; ?>/public/assets/img/content/sanfran.jpg" alt="San Francisco" class="place-img">
@@ -82,7 +82,13 @@
                     <h3 class="place-heading"><?php echo $tour['address'] ?></h3>
                     <p class="place-time"><?php echo $tour['date'] ?></p>
                     <p class="place-decs"><?php echo $tour['description'] ?></p>
-                    <button class="buy-ticket">Buy Tickets</button>
+                    <!-- <form action="<?php echo _WEB_ROOT . "/tour/detail/$tour[id]" ?>" <button class="buy-ticket">Buy Tickets</button> </form> -->
+
+                    <a href="<?php echo _WEB_ROOT . "/tour/detail/$tour[id]" ?>" style="color: #fff;text-decoration: none;">
+                        <div class="buy-ticket" style="width: 94%;">
+                            Buy Tickets
+                        </div>
+                    </a>
                 </div>
             </div>
         <?php } ?>
