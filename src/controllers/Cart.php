@@ -123,11 +123,11 @@ class Cart extends Controller
         // $this->render('tour/detail', $this->data);
     }
 
-    public function fileupload()
-    {
-        $this->file->fileUpload('user/');
-        $this->index();
-    }
+    // public function fileupload()
+    // {
+    //     $this->file->fileUpload('user/',);
+    //     $this->index();
+    // }
 
     public function readfile($imgName)
     {

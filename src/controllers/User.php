@@ -46,7 +46,7 @@ class User extends Controller
         $this->model_user->updateModel($_SESSION['id'], $dataUser);
 
         echo $filename;
-        $this->file->fileUpload('user/');
+        $this->file->fileUpload('user/', 'fileToUpload');
         $this->index();
     }
 

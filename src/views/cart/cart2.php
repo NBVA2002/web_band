@@ -76,20 +76,20 @@
     </section> -->
         <section class="cart">
             <h2>Cart</h2>
-            <form action="">
+            <form action="<?php echo _WEB_ROOT; ?>/cart/create" method="post">
                 <table>
                     <thead>
                         <tr>
                             <th>Product</th>
                             <th>Quantity</th>
-                            <th>Money/Ticket</th>
+                            <th>Money</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($cart_list as $cart) { ?>
                             <tr>
-                                <td style="display: flex; align-items: left;"><img style="width:70px" src="" alt=""></td>
+                                <td style="display: flex; align-items: left;"><img style="width:70px" src="<?php echo _WEB_ROOT?>/cart/readfile/<?php echo $cart['tour_id']['img_url']?>" alt=""></td>
                                 <td><input style="width: 50px; outline: none;" type="number" value="<?php echo $cart['quantity']?>" min="0"></td>
                                 <td>
                                     <p><span><?php echo $cart['quantity'] * $cart['tour_id']['price'] ?></span></p>
@@ -102,7 +102,7 @@
                 <div style="text-align: right;" class="price-total">
                     <p style="font-weight: bold; margin-top: 20px"> Sum:<span>0</span>$</p>
                 </div>
-                <button> Done </button>
+                <button type="submit"> Done </button>
             </form>
         </section>
     </div>
