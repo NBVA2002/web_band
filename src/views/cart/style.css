@@ -1,0 +1,195 @@
+/* Reset CSS */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+#header {
+    height: 46.5px;
+    background-color: black;
+    
+}
+
+#nav li {
+    display: inline-block;
+    position: relative;
+}
+
+#nav > li > a {
+    color: #fff;
+    text-transform: uppercase;
+}
+
+#nav li a {
+    text-decoration: none;
+    line-height: 46.5px;
+    padding: 0px 24px;  
+    display: inline-block;
+    /* position: relative; */
+}
+
+
+#nav > li:hover > a,
+#nav .subnav li:hover {
+    color: #000;
+    background-color: #ccc;
+    /* height: 46.5px; */
+    width: 100%;
+}
+
+#nav .subnav {
+    position: absolute;
+    top: 46.5px;
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 10px 0px, rgba(0, 0, 0, 0.19) 0px 4px 20px 0px;
+    /* display: none; */
+}
+
+#nav .subnav a {
+    color: #000;
+    padding: 0 16px;
+    line-height: 38,5px;
+}
+
+/* ----- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* background-color: #000000; */
+}
+
+.product {
+    background-color: #fff;
+    width: 1200px;
+    margin: auto;
+}
+
+.container {
+    margin: auto;
+    background-color: #fff;
+}
+
+.product-items {
+    display: flex;
+    justify-content: space-between;
+    background-color: #ddd;
+}
+
+.product-item {
+    width: 19%;
+    background-color: #ffffff;
+    padding: 12px;
+    text-align: center;
+    background: #fff;
+}
+
+.product-item img {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.product-item-text {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+
+}
+
+.product-item h1 {
+    background-color: #fff;
+}
+
+.product-item-text p {
+    background-color: #ffffff;
+}
+
+.product-item-text span {
+    color: #000000;
+    background-position: 100%;
+    background-color: #ffffff;
+}
+
+.product-item button {
+    margin-top: 12px;
+    height: 30px;
+    padding: 0 12px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    background-color: #e6e4e4;
+}
+
+.product-item button:hover {
+    background-color: tomato;
+}
+ 
+/*---------------------------Cart-------------- */
+.cart {
+    margin: auto;
+    text-align: center;
+    padding-top: 30px;
+    /* margin-bottom: 50px; */
+}
+
+.cart h2 {
+    margin-bottom: 20px;
+    background-color: #e6e4e4;
+}
+
+.cart table {
+    width: 100%;
+    background-color:#e6e4e4;
+}
+
+.cart table thead tr th:first-child {
+    text-align : left;
+}
+
+.cart table thead {
+    background-color: #e6e4e4;
+}
+
+.cart table tr td {
+    border-bottom: 1px solid #ff0000;
+    padding: 12px 0;
+}
+
+/* -------------- thanh toan---------- */
+
+.cart button {
+    text-align: justify;
+    margin-top: 12px;
+    height: 30px;
+    padding: 0 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.cart *form {
+    background-color: #e6e4e4;
+}
+
+.cart {
+    position: relative;
+    margin-bottom: 100px;
+    height: 90vh;
+    width: 1200px;
+    right: 0;
+    top: 0;
+    background-color: #e6e4e4;
+    padding: 20px 20px;
+    /* overflow-y: scroll; */
+}

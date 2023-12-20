@@ -36,7 +36,7 @@ class Login extends Controller
     {
         if (isset($_SESSION['id'])) {
             Header("Location:" . _WEB_ROOT . "/home");
-            session_destroy();
+            // session_destroy();
         } else {
             $this->data['err_email'] = "";
             $this->data['err_password'] = "";

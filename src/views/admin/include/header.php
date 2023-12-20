@@ -24,35 +24,32 @@
 </head>
 
 <body>
+    
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="#">WEB_BAND</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<?= _WEB_ROOT ?>/admin">Home</a>
+                        <a class="nav-link active" aria-current="page" href="<?= _WEB_ROOT ?>/admin">Trang chủ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= _WEB_ROOT ?>/user">Quản lý người dùng</a>
+                        <a class="nav-link" href="<?= _WEB_ROOT ?>/userManage">Quản lý người dùng</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= _WEB_ROOT ?>/ticket">Quản lý vé</a>
+                        <a class="nav-link" href="<?= _WEB_ROOT ?>/tourManage">Quản lý tour diễn</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= _WEB_ROOT ?>/order">Quản lý đơn hàng</a>
+                        <a class="nav-link" href="<?= _WEB_ROOT ?>/ticketManage">Quản lý vé</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        <a class="nav-link" href="<?= _WEB_ROOT ?>/orderManage">Quản lý đơn hàng</a>
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <div id="timer">0:05:09</div>
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
             </div>
+            <div class="form-inline my-2 my-lg-0" style="font-weight:bold;font-size:larger" id="timer">0:05:09</div>
         </div>
     </nav>

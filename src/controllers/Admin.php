@@ -16,4 +16,5 @@ class Admin extends Controller
         $this->render('admin/admin',$this->data);
         // $this->model_admin = $this->delete(2);
     }
+    public function user() {}
 }

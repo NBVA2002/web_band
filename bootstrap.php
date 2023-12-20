@@ -28,3 +28,5 @@ if(!empty($config['database'])){
 
 require_once 'core/Model.php';
 require_once 'core/Controller.php';
+require_once 'core/FileUpload.php';
+// require_once 'core/MailSender.php';
