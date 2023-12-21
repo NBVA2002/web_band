@@ -1,5 +1,6 @@
 <?php
-class TourModel extends Model{
+class TourModel extends Model
+{
     protected $_table = 'tour';
 
     public function __construct()
@@ -31,4 +32,5 @@ class TourModel extends Model{
     {
         return parent::findById($this->_table, $id);
     }
+
 }

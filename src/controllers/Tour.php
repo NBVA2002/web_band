@@ -28,5 +28,4 @@ class Tour extends Controller
         $this->render('tour/detail', $this->data);
     }
 
-    
 }
