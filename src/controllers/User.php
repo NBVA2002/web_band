@@ -30,23 +30,26 @@ class User extends Controller
 
     public function update()
     {
+        $dataUser  = $this->model_user->getDetailModel($_SESSION['id']);
         $email = $_POST['email'];
-        $password = $_POST['password'];
         $name = $_POST['name'];
         $phone = $_POST['phone'];
         $address = $_POST['address'];
-        echo $email."/".$password."/".$name."/".$phone."/".$address;
+        $dataUser['email'] = $email;
+        $dataUser['name'] = $name;
+        $dataUser['phone'] = $phone;
+        $dataUser['address'] = $address;
+        $this->model_user->updateModel($_SESSION['id'], $dataUser);
+        Header("Location:" . _WEB_ROOT . "/user");
     }
 
     public function change_avatar()
     {
-        $filename = $_FILES["fileToUpload"]["name"];
+        $filename = $this->file->fileUpload('user/', 'fileToUpload')[1];
         $dataUser  = $this->model_user->getDetailModel($_SESSION['id']);
         $dataUser['img_url'] = $filename;
         $this->model_user->updateModel($_SESSION['id'], $dataUser);
 
-        echo $filename;
-        $this->file->fileUpload('user/', 'fileToUpload');
         $this->index();
     }
 

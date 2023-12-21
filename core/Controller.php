@@ -25,5 +25,6 @@ class Controller
             require_once _DIR_ROOT . '/src/views/' . $view . '.php';
         }
     }
+    
 
 }
