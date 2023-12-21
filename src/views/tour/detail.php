@@ -59,7 +59,10 @@
                     <p>Số vé còn lại: 100</p>
 
                     <!-- Nút giỏ hàng và thanh toán -->
-                    <button type="button" class="btn btn-primary">Thêm vào giỏ hàng</button>
+                    <form action="<?php echo _WEB_ROOT ?>/cart">
+                        <button type="button" class="btn btn-primary">Thêm vào giỏ hàng</button>
+                    </form>
+
                     <button type="button" class="btn btn-success">Thanh toán</button>
                 </div>
             </div>
