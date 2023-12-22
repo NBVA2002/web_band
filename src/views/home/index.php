@@ -100,14 +100,14 @@
 
                 <!-- place -->
                 <div class="place-list">
-                    <?php foreach ($tour_list as $tour) { ?>
+                    <?php for ($i = 0; $i < 3; $i++) { ?>
                         <div class="place-item">
-                            <img src="<?php echo _WEB_ROOT."/tour/readfile/".$tour['img_url'] ?>" alt="San Francisco" class="place-img">
+                            <img src="<?php echo _WEB_ROOT."/tour/readfile/".$tour_list[$i]['img_url'] ?>" alt="San Francisco" class="place-img">
                             <div class="place-body">
-                                <h3 class="place-heading"><?php echo $tour['address'] ?></h3>
-                                <p class="place-time"><?php echo $tour['date'] ?></p>
-                                <p class="place-decs"><?php echo $tour['description'] ?></p>
-                                <a href="<?php echo _WEB_ROOT."/tour/detail/".$tour['id'] ?>" class="place-buy-btn js-buy-ticket s-full-width ">Buy Tickets</a>
+                                <h3 class="place-heading"><?php echo $tour_list[$i]['address'] ?></h3>
+                                <p class="place-time"><?php echo $tour_list[$i]['date'] ?></p>
+                                <p class="place-decs"><?php echo $tour_list[$i]['description'] ?></p>
+                                <a href="<?php echo _WEB_ROOT."/tour/detail/".$tour_list[$i]['id'] ?>" class="place-buy-btn js-buy-ticket s-full-width ">Buy Tickets</a>
                             </div>
                         </div>
                     <?php } ?>
