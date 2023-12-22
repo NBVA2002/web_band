@@ -198,7 +198,7 @@ class Admin extends Controller
 
     public function list()
     {
-        $data = $this->model_user->getList();
+        $data = $this->model_user->getListModel();
         // echo '<pre>';
         // echo print_r($data);
         // echo '</pre>';

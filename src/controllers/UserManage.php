@@ -5,8 +5,13 @@ class UserManage extends Controller
     public $file;
     public function __construct()
     {
-        $this->file = new FileUpload();
-        $this->model_user = $this->model('UserModel');
+        if($_SESSION['role'] == "ROLE_ADMIN" || $_SESSION['role'] == "ROLE_MEMBER" && isset($_SESSION['id'])) {
+            $this->file = new FileUpload();
+            $this->model_user = $this->model('UserModel');
+        } else {
+            Header("Location: "._WEB_ROOT."/home");
+        }
+        
     }
 
     public function index()
@@ -132,7 +137,7 @@ class UserManage extends Controller
                     'image'  =>  $user_image
                 );
 
-                if ($this->model_user->createUser($data)) {
+                if ($this->model_user->createModel($data)) {
                     $output = array(
                         'success'        =>    'Thêm người dùng thành công',
                     );
@@ -218,7 +223,10 @@ class UserManage extends Controller
                     $error++;
                 }
             }
-            
+            $role = "ROLE_ADMIN";
+            if(!empty($_POST['user_role'])) {
+                $role = $_POST['user_role'];
+            }
             if ($error > 0) {
                 $output = array(
                     'error'                       =>    true,
@@ -231,25 +239,23 @@ class UserManage extends Controller
             } else {
                 if ($user_image != "") {
                     $data = array(
-                        'password' => password_hash($user_psw1, PASSWORD_DEFAULT),
-                        'name' => $user_name,
-                        'phone' => $user_phone,
-                        'address' => $user_address,
-                        'role' => $_POST['user_role'],
-                        'image'  =>  $user_image 
+                        'password'      => password_hash($user_psw1, PASSWORD_DEFAULT),
+                        'name'          => $user_name,
+                        'phone'         => $user_phone,
+                        'address'       => $user_address,
+                        'role'          => $role,
+                        'image'         =>  $user_image 
                     );
                 } else {
                     $data = array(
-                        'password' => password_hash($user_psw1, PASSWORD_DEFAULT),
-                        'name' => $user_name,
-                        'phone' => $user_phone,
-                        'address' => $user_address,
-                        'role' => $_POST['user_role'],
+                        'password'      => password_hash($user_psw1, PASSWORD_DEFAULT),
+                        'name'          => $user_name,
+                        'phone'         => $user_phone,
+                        'address'       => $user_address,
+                        'role'          => $role,
                     );
                 }
-                
-
-                if ($this->model_user->updateUser($id,$data)) {
+                if ($this->model_user->updateModel($id,$data)) {
                     $output = array(
                         'success'        =>    'Thay đổi thành công',
                     );
@@ -267,7 +273,7 @@ class UserManage extends Controller
     {
         
         if ($_POST['action'] == "delete") {
-            if($this->model_user->deleteUser($id)) {
+            if($this->model_user->deleteModel($id)) {
                 echo "Xóa người dùng thành công";
             }
         }
@@ -303,7 +309,7 @@ class UserManage extends Controller
             if ($_POST["length"] != -1) {
                 $condition .= 'LIMIT ' . $_POST['start'] . ', ' . $_POST['length'];
             }
-            $result = $this->model_user->getUserCondition($condition);
+            $result = $this->model_user->getListModel($condition);
             $data1 = array();
             $filtered_rows = 0;
             if (count($result) < 10) {
@@ -321,15 +327,22 @@ class UserManage extends Controller
                 $sub_array[] = $row["address"];
                 $sub_array[] = $row["phone"];
                 $sub_array[] = $row["role"];
-                $sub_array[] = '<button type="button" name="view_user" class="btn btn-info btn-sm view_user" id="' . $row["id"] . '">View</button>';
-                $sub_array[] = '<button type="button" name="edit_user" class="btn btn-primary btn-sm edit_user" id="' . $row["id"] . '">Edit</button>';
-                $sub_array[] = '<button type="button" name="delete_user" class="btn btn-danger btn-sm delete_user" id="' . $row["id"] . '">Delete</button>';
+                if ($_SESSION['role'] == "ROLE_MEMBER") {
+                    $sub_array[] = '<button type="button" name="view_user" class="btn btn-info btn-sm view_user" id="' . $row["id"] . '">View</button>';
+                    $sub_array[] = '<button type="button" name="edit_user" class="btn btn-primary btn-sm edit_user" id="' . $row["id"] . '" disabled>Edit</button>';
+                    $sub_array[] = '<button type="button" name="delete_user" class="btn btn-danger btn-sm delete_user" id="' . $row["id"] . '" disabled>Delete</button>';
+                } else {
+                    $sub_array[] = '<button type="button" name="view_user" class="btn btn-info btn-sm view_user" id="' . $row["id"] . '">View</button>';
+                    $sub_array[] = '<button type="button" name="edit_user" class="btn btn-primary btn-sm edit_user" id="' . $row["id"] . '">Edit</button>';
+                    $sub_array[] = '<button type="button" name="delete_user" class="btn btn-danger btn-sm delete_user" id="' . $row["id"] . '">Delete</button>';
+                }
+                
                 $data1[] = $sub_array;
             }
             $output = array(
                 "draw"                =>    intval($_POST["draw"]),
                 "recordsTotal"        =>    $filtered_rows,
-                "recordsFiltered"    =>     count($this->model_user->getList()),
+                "recordsFiltered"    =>     count($this->model_user->getListModel()),
                 "data"                =>    $data1
             );
             // print_r($_POST);
@@ -340,7 +353,7 @@ class UserManage extends Controller
     public function detail($id)
     {
         if ($_POST['action'] == "single_fetch") {
-            $dataDetail  = $this->model_user->getUserCondition("WHERE id = $id");
+            $dataDetail  = $this->model_user->getListModel("WHERE id = $id");
             $output = [];
             foreach ($dataDetail as $row) {
                 $output['user_image'] = "upload/user/".$row['image'];

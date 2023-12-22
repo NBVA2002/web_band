@@ -33,4 +33,11 @@ class TourModel extends Model
         return parent::findById($this->_table, $id);
     }
 
+    public function getNumTicket($id)
+    {
+        return parent::querySQL("SELECT COUNT(*) as number FROM tour 
+        left join ticket on tour.id = ticket.tour_id
+        WHERE ticket.status = 'IN_STOCK' and tour.id = $id
+        GROUP by tour.id;");
+    }
 }
