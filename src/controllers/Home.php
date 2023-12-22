@@ -65,4 +65,18 @@ class Home extends Controller
         $this->data['tour_detail'] = $dataDetail;
         $this->render('tour/detail',$this->data);
     }
+
+    public function send_mail()
+    {
+        $email = $_POST['email'];
+        $name = $_POST['name'];
+        $message = $_POST['message'];
+        $mail = new MailSender();
+        return $mail->sendMail('nguyenbavietanh2002@gmail.com','Contact', '
+        <h1>Thông tin liên hệ</h1>
+        <p>Email: '.$email.'</p>
+        <p>Name: '.$name.'</p>
+        <p>Message: '.$message.'</p>
+        ');
+    }
 }

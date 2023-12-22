@@ -3,9 +3,11 @@ class Tour extends Controller
 {
     public $data = [];
     public $model_tour;
+    public $file;
 
     public function __construct()
     {
+        $this->file = new FileUpload();
         $this->model_tour = $this->model('TourModel');
     }
 
@@ -28,4 +30,8 @@ class Tour extends Controller
         $this->render('tour/detail', $this->data);
     }
 
+    public function readfile($imgName)
+    {
+        $this->file->getFileContent('tour/' . $imgName);
+    }
 }

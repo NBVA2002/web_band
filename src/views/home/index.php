@@ -48,9 +48,9 @@
             <a class="search-btn" href="<?php echo _WEB_ROOT; ?>/user">
                 <i class="fa-solid fa-user search-icon" style="color:#fff"></i>
             </a>
-            <div class="search-btn">
+            <a class="search-btn" href="<?php echo _WEB_ROOT; ?>/tour/list" style="text-decoration: none;">
                 <div class="search-icon ti-search"></div>
-            </div>
+            </a>
             
         </div>
     </div>
@@ -102,12 +102,12 @@
                 <div class="place-list">
                     <?php foreach ($tour_list as $tour) { ?>
                         <div class="place-item">
-                            <img src="<?php echo _WEB_ROOT; ?>/public/assets/img/content/sanfran.jpg" alt="San Francisco" class="place-img">
+                            <img src="<?php echo _WEB_ROOT."/tour/readfile/".$tour['img_url'] ?>" alt="San Francisco" class="place-img">
                             <div class="place-body">
                                 <h3 class="place-heading"><?php echo $tour['address'] ?></h3>
                                 <p class="place-time"><?php echo $tour['date'] ?></p>
                                 <p class="place-decs"><?php echo $tour['description'] ?></p>
-                                <button class="place-buy-btn js-buy-ticket s-full-width ">Buy Tickets</button>
+                                <a href="<?php echo _WEB_ROOT."/tour/detail/".$tour['id'] ?>" class="place-buy-btn js-buy-ticket s-full-width ">Buy Tickets</a>
                             </div>
                         </div>
                     <?php } ?>
@@ -126,26 +126,28 @@
             <div class="row contact-content">
                 <div class="col col-half s-col-full contact-info">
                     <p><i class="ti-location-pin"></i>Chicago, US</p>
-                    <p><i class="ti-mobile"></i>Phone: <a href="tel:+00 151515">+00 151515</a></p>
-                    <p><i class="ti-email"></i>Email: <a href="mailto:mail@mail.com">mail@mail.com</a></p>
+                    <p><i class="ti-mobile"></i>Phone: <a href="tel:+00 151515">0837021702</a></p>
+                    <p><i class="ti-email"></i>Email: <a href="mailto:mail@mail.com">nguyenbavietanh2002@mail.com</a></p>
                 </div>
                 <div class="col col-half s-col-full contact-form">
-                    <form action="">
+                    <form action="<?php echo _WEB_ROOT;?>/home/send_mail" method="post">
                         <div class="row">
                             <div class="col col-half s-col-full">
-                                <input type="text" placeholder="Name" required name="" id="" class="from-control">
+                                <input type="text" placeholder="Name" required name="name" id="" class="from-control">
                             </div>
 
                             <div class="col col-half s-col-full s-mt-8">
-                                <input type="text" placeholder="Email" required name="" id="" class="from-control">
+                                <input type="text" placeholder="Email" required name="email" id="" class="from-control">
                             </div>
                         </div>
                         <div class="row mt-8">
                             <div class="col col-full">
-                                <input type="text" placeholder="Message" required name="" id="" class="from-control">
+                                <input type="text" placeholder="Message" required name="message" id="" class="from-control">
                             </div>
                         </div>
-                        <input class="form-submit-btn mt-16 s-full-width" type="submit" value="SEND">
+                        <button class="form-submit-btn mt-16 s-full-width" type="submit" value="SEND">
+                            Send
+                        </button>
                     </form>
                 </div>
             </div>
@@ -205,31 +207,31 @@
     </div>
 
     <script>
-        const buyBtns = document.querySelectorAll('.js-buy-ticket')
-        const modal = document.querySelector('.modal')
-        const modalclose = document.querySelector('.modal-close')
-        const modalcontainer = document.querySelector('.modal-container')
+        // const buyBtns = document.querySelectorAll('.js-buy-ticket')
+        // const modal = document.querySelector('.modal')
+        // const modalclose = document.querySelector('.modal-close')
+        // const modalcontainer = document.querySelector('.modal-container')
 
 
-        function showBuyTickets() {
-            modal.classList.add('open')
-        }
+        // function showBuyTickets() {
+        //     modal.classList.add('open')
+        // }
 
-        function hiddenBuyTickets() {
-            modal.classList.remove('open')
-        }
+        // function hiddenBuyTickets() {
+        //     modal.classList.remove('open')
+        // }
 
-        for (const buyBtn of buyBtns) {
-            buyBtn.addEventListener('click', showBuyTickets)
-        }
+        // for (const buyBtn of buyBtns) {
+        //     buyBtn.addEventListener('click', showBuyTickets)
+        // }
 
-        modalclose.addEventListener('click', hiddenBuyTickets)
+        // modalclose.addEventListener('click', hiddenBuyTickets)
 
-        modal.addEventListener('click', hiddenBuyTickets)
+        // modal.addEventListener('click', hiddenBuyTickets)
 
-        modalcontainer.addEventListener('click', function(event) {
-            event.stopPropagation()
-        })
+        // modalcontainer.addEventListener('click', function(event) {
+        //     event.stopPropagation()
+        // })
     </script>
 
     <script>
