@@ -1,3 +1,26 @@
+create or replace PROCEDURE GET_PAGE_NHOMQUYTRINH (
+    p_page_number IN OUT NUMBER,
+    p_page_size IN OUT NUMBER,
+    p_totalElements OUT NUMBER,
+    p_totalPages OUT NUMBER,
+    p_cursor OUT SYS_REFCURSOR
+)
+IS
+BEGIN
+    SELECT COUNT(*)
+    INTO p_totalElements
+    FROM "NhomQuyTrinh";
+    
+     p_totalPages := CEIL(p_totalElements / p_page_size);
+    
+    OPEN p_cursor FOR
+    SELECT * 
+    FROM "NhomQuyTrinh"
+    OFFSET (p_page_number - 1) * p_page_size ROWS FETCH NEXT p_page_size ROWS ONLY
+    ;
+END GET_PAGE_NHOMQUYTRINH;
+
+Springboot jpa cách gọi procedure này và trả về kết quả dạng PageResponse(page, size, getTotalPages, getTotalElements, listData)
 <?php
 // public function fileUpload($uploadFile, $name_file)
 // {
